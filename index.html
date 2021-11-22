@@ -215,13 +215,15 @@
       }
     }
 
-//     throw new ExistenceError("Error does not exist");
-
-    /*
-    if (window.onerror) {
-      console.log('There was an error');
+    
+    try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (err) {
+        alert("Insert a valid number");
+        throw new ExistenceError("Error does not exist");
     }
-    */
+
+    
 
 
   </script>
