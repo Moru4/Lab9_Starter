@@ -95,13 +95,133 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (err) {
+        alert("Insert a valid number");
+        throw new Error('Invalid number was entered');
+        } finally {
+        console.log("hello");
+      }
+
+      
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
     // Start your code here
     // You may move this JS to another file if you wish
+    let logButton = document.querySelectorAll('button')[1];
+    logButton.addEventListener('click', () => {
+      console.log('Console log button');
+    });
+
+    let errButton = document.querySelectorAll('button')[2];
+    errButton.addEventListener('click', () => {
+      console.error('Console error button');
+    });
+
+    let countButton = document.querySelectorAll('button')[3];
+    countButton.addEventListener('click', () => {
+      console.count('Count button');
+    });
+
+    let warnButton = document.querySelectorAll('button')[4];
+    warnButton.addEventListener('click', () => {
+      console.warn('Console warn button');
+    });
+
+    let assertButton = document.querySelectorAll('button')[5];
+    assertButton.addEventListener('click', () => {
+      let x = 1;
+      let y = 1;
+      let reason = 'x is expected to be greater than y'
+      console.assert(x > y, {x, y, reason});
+    });
+
+    let clearButton = document.querySelectorAll('button')[6];
+    clearButton.addEventListener('click', () => {
+      console.clear();
+    });
+
+    let dirButton = document.querySelectorAll('button')[7];
+    dirButton.addEventListener('click', () => {
+      console.dir(document.body);
+    });
+
+    let dirxmlButton = document.querySelectorAll('button')[8];
+    dirxmlButton.addEventListener('click', () => {
+      console.dirxml(document);
+    });
+
+    let groupSButton = document.querySelectorAll('button')[9];
+    groupSButton.addEventListener('click', () => {
+      console.group('console.group');
+    });
+
+    let groupEButton = document.querySelectorAll('button')[10];
+    groupEButton.addEventListener('click', () => {
+      console.groupEnd('console.group');
+    });
+
+    let tableButton = document.querySelectorAll('button')[11];
+    tableButton.addEventListener('click', () => {
+      console.table([
+        {
+          first: 'Cristiano',
+          last: 'Ronaldo',
+          number: '7',
+        },
+        {
+          first: 'Lionel',
+          last: 'Messi',
+          number: '10',
+        },
+        {
+          first: 'Roberto',
+          last: 'Alvarado',
+        }
+      ]);
+    });
+
+    let timerSButton = document.querySelectorAll('button')[12];
+    timerSButton.addEventListener('click', () => {
+      console.time('console timer');
+    });
+
+    let timerEButton = document.querySelectorAll('button')[13];
+    timerEButton.addEventListener('click', () => {
+      console.timeEnd('console timer');
+    });
+
+    let traceButton = document.querySelectorAll('button')[14];
+    traceButton.addEventListener('click', () => {
+      console.trace();
+    });
+
+    let gErrorButton = document.querySelectorAll('button')[15];
+    gErrorButton.addEventListener('click', () => {
+      
+      window.onerror = function(msg, url, lineNo, colNum, error) {
+        console.log("there has been an error");
+      };
+      eval(m * 0);
+    });
+
+    class ExistenceError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "ExistenceError";
+      }
+    }
+
+    throw new ExistenceError("Error does not exist");
+
+    if (window.onerror) {
+      console.log('There was an error');
+    }
+
+
   </script>
 </body>
 
